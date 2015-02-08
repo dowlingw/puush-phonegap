@@ -36,6 +36,41 @@ c.controller('NavCtrl', function($scope,$route,Puush) {
     };
 });
 
+// This is a controller just for handling the "puush button"
+c.controller('PuushCtrl', function($scope) {
+    $scope.picOk = function(image) {
+        console.log("win")
+        // Crap, we have a picture now we need to do something with it
+    };
+
+    $scope.optSelected = function(btnIdx) {
+        if( btnIdx == 3 ) {
+            return;
+        }
+        var imageSource = (btnIdx === 1) ? Camera.PictureSourceType.CAMERA : Camera.PictureSourceType.PHOTOLIBRARY;
+
+        navigator.camera.getPicture($scope.picOk, null, { quality: 50,
+            sourceType: imageSource,
+            destinationType: Camera.DestinationType.DATA_URL,
+            correctOrientation: true
+        });
+    };
+
+    $scope.TakePicture = function() {
+        navigator.notification.confirm(
+            'Select the source for the photo to puush',
+            $scope.optSelected,
+            'Picture Source',
+            [
+                // Order here is important for optSelected
+                'Take Photo',
+                'Photo Library',
+                'Cancel'
+            ]
+        );
+    };
+});
+
 c.controller('HistoryCtrl', function($scope,Puush,Persist) {
     $scope.history = Persist.history;
     $scope.transacting = false;
@@ -58,24 +93,6 @@ c.controller('HistoryCtrl', function($scope,Puush,Persist) {
 });
 
 c.controller('UploadCtrl', function($scope,Puush) {
-
-    $scope.picOk = function(image) {
-
-    };
-
-    $scope.picFail = function() {
-        console.log("boourns")
-    };
-
-    $scope.TakePicture = function() {
-        navigator.camera.getPicture($scope.picOk, $scope.picFail(), { quality: 50,
-            destinationType: Camera.DestinationType.DATA_URL,
-            correctOrientation: true
-        });
-    };
-
-    // On load: take a photo yo!
-    $scope.TakePicture();
 });
 
 c.controller('AccountCtrl', function($scope,Puush,Persist) {

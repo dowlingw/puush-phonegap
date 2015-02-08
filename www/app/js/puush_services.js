@@ -9,10 +9,20 @@ var CLIENT_DB_KEY_HISTORY = 'HISTORY';
 var s = angular.module('puushServices', []);
 
 // Hook any initialisation here
-s.run(function(Persist){
+s.run(function(Persist,Camera) {
+    document.addEventListener("deviceready", Camera._fireReady, true);
     Persist.Initialise();
 });
 
+s.factory('Camera',function() {
+    var svc = {};
+
+    svc._fireReady = function() {
+        console.log("yo dawg, that camera bitch be ready");
+    };
+
+    return svc;
+});
 
 // Service for access local storage
 s.factory('Persist', function($rootScope,$location,webStorage){

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="me.puush.client.universal" version="1.0.0" xmlns="http://www.w3.org/ns/widgets http://phonegap.com/ns/1.0">
-	<name>puush-phonegap</name>
+	<name>puush</name>
 	<description>
 		Universal puush client for mobile devices
 	</description>
@@ -10,7 +10,6 @@
 	
 	<preference name="permissions" value="" />
 	
-	<content src="index.html" />
 	<access origin="*" />
 	
 	<preference name="fullscreen" value="false" />
@@ -24,8 +23,13 @@
 	<icon src="icon.png" />
 
 	<plugin name="org.apache.cordova.camera" />
-	<plugin name="org.apache.cordova.statusbar" />
+	<feature name="http://api.phonegap.com/1.0/camera" required="true" />
 
+	<plugin name="org.apache.cordova.statusbar" />
+	<preference name="StatusBarOverlaysWebView" value="false" />
+	<preference name="StatusBarBackgroundColor" value="#000000" />
+	<preference name="StatusBarStyle" value="lightcontent" />
+	
 	<platform name="ios">
 		<preference name="DisallowOverscroll" value="true" />
 		<icon height="57" src="www/res/icon/ios/icon-57.png" width="57" />
@@ -37,11 +41,5 @@
 		<splash height="1136" src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" />
 		<splash height="1024" src="www/res/screen/ios/screen-ipad-portrait.png" width="768" />
 		<splash height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
-
-
-		<!-- Status bar -->
-		<preference name="StatusBarOverlaysWebView" value="false" />
-		<preference name="StatusBarBackgroundColor" value="#000000" />
-		<preference name="StatusBarStyle" value="lightcontent" />
 	</platform>
 </widget>
