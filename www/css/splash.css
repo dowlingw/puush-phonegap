@@ -1,0 +1,25 @@
+body, html {
+	border: 0px;
+	margin: 0px;
+	background: black;
+
+	width: 100%;
+	height: 100%;
+
+	text-align: center;
+}
+
+body {
+	padding: 10%;
+}
+
+.logo {
+	width: 80%;
+	height: 80%;
+	display: block;
+
+	background-size: contain;
+	background-position: center;
+	background-image: url('../img/splash_logo.png');
+	background-repeat: no-repeat;
+}

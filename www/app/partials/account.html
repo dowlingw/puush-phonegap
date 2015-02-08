@@ -1,0 +1,72 @@
+<header class="bar bar-nav">
+    <h1 class="title">My Account</h1>
+</header>
+<div class="content">
+    <div class="content-padded">
+        <h5>Account Settings</h5>
+    </div>
+    <form class="input-group">
+        <div class="input-row">
+            <label>Email</label>
+            <input type="text" ng-model="user_email" disabled />
+        </div>
+        <div class="input-row">
+            <label>API Key</label>
+            <input type="email" ng-model="user_apikey" disabled />
+        </div>
+        <div class="input-row">
+            <label>Type</label>
+            <input type="text" disabled />
+        </div>
+        <div class="input-row">
+            <label>Expiry</label>
+            <input type="text" disabled />
+        </div>
+    </form>
+    <div class="content-padded">
+        <h5>Upload Settings</h5>
+    </div>
+    <form class="input-group">
+        <div class="input-row">
+            <label>Compression</label>
+            <input type="text" disabled />
+        </div>
+        <div class="input-row">
+            <label>Size</label>
+            <input type="email" disabled />
+        </div>
+    </form>
+    <div class="content-padded">
+        <h5>On successful puush...</h5>
+    </div>
+    <ul class="table-view">
+        <li class="table-view-cell">
+            Play Sound
+            <div class="toggle active">
+                <div class="toggle-handle"></div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="content-padded">
+        <h5>Application</h5>
+    </div>
+    <ul class="table-view">
+        <li class="table-view-cell">
+            <a class="navigate-right" ng-click="Reset()">
+                Reset data
+            </a>
+        </li>
+    </ul>
+
+    <div class="content-padded">
+        <h5>Legal</h5>
+    </div>
+    <ul class="table-view">
+        <li class="table-view-cell">
+            <a class="navigate-right">
+                License
+            </a>
+        </li>
+    </ul>
+</div>

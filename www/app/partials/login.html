@@ -1,0 +1,22 @@
+<div class="login-banner"></div>
+<form class="input-group" name="loginForm">
+    <div class="input-row">
+        <label>Email</label>
+        <input ng-disabled="transacting" type="email" placeholder="user@example.com" ng-model="email" required autofocus />
+    </div>
+    <div class="input-row">
+        <label>Password</label>
+        <input ng-disabled="transacting" type="password" placeholder="secret" ng-model="pass" required />
+    </div>
+</form>
+<div class="content-padded">
+    <p><b>Warning:</b> Some bitch done come and beat this app down with the ugly stick. Shit be fixed as soon as it works, yo. Fuckin' unbelievable.</p>
+    <div class="yolo" ng-show="transacting">
+        <i class="fa fa-spinner fa-pulse fa-5x"></i>
+    </div>
+</div>
+<div class="bar bar-standard bar-footer">
+    <button class="btn btn-positive btn-block" ng-disabled="loginForm.$invalid || transacting" ng-click="doLogin()" type="submit">
+        Login
+    </button>
+</div>

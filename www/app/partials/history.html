@@ -1,0 +1,25 @@
+<header class="bar bar-nav">
+    <a class="icon icon-refresh pull-right" ng-class="{'fa-spin': transacting}" ng-click="Update()"></a>
+    <h1 class="title">History</h1>
+</header>
+<div class="content">
+    <p class="content-padded premium">
+    </p>
+    <ul class="table-view">
+
+        <li class="table-view-cell media" ng-repeat="item in history">
+            <a class="navigate-right">
+                <img class="media-object pull-left" src="http://placehold.it/42x42">
+                <div class="media-body">
+                    {{item.filename}}
+                    <p>{{item.date}}</p>
+                </div>
+            </a>
+        </li>
+
+    </ul>
+    <!--Dirty hack-->
+    <br />
+    <br />
+    <br />
+</div>
