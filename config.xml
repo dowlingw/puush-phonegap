@@ -29,6 +29,8 @@
 	<preference name="StatusBarOverlaysWebView" value="false" />
 	<preference name="StatusBarBackgroundColor" value="#000000" />
 	<preference name="StatusBarStyle" value="lightcontent" />
+
+	<plugin name="org.apache.cordova.file" />
 	
 	<platform name="ios">
 		<preference name="DisallowOverscroll" value="true" />

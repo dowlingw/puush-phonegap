@@ -37,10 +37,32 @@ c.controller('NavCtrl', function($scope,$route,Puush) {
 });
 
 // This is a controller just for handling the "puush button"
-c.controller('PuushCtrl', function($scope) {
-    $scope.picOk = function(image) {
-        console.log("win")
-        // Crap, we have a picture now we need to do something with it
+c.controller('PuushCtrl', function($scope,Puush) {
+
+    $scope.picOk = function(imagePath) {
+        Puush.GetFile(imagePath)
+            .then(function(file){
+                Puush.MD5HashFile(file)
+                    .then(function(md5_hash){
+                        Puush.Upload(file,md5_hash)
+                            .success(function(response) {
+                                console.log("image... uploaded");
+                                console.log(response);
+                            })
+                            .error(function(response) {
+                                console.log("Haha of course that didn't work chump!");
+                                console.log(response);
+                            })
+                            .finally(function() {
+                                // Delete any images temporarily created
+                                navigator.camera.cleanup();
+                            });
+                    },function(){
+                        console.log("Failed to hash file");
+                    });
+            },function(){
+                console.log("Failed to get file");
+            });
     };
 
     $scope.optSelected = function(btnIdx) {
@@ -51,7 +73,7 @@ c.controller('PuushCtrl', function($scope) {
 
         navigator.camera.getPicture($scope.picOk, null, { quality: 50,
             sourceType: imageSource,
-            destinationType: Camera.DestinationType.DATA_URL,
+            destinationType: Camera.DestinationType.FILE_URI,
             correctOrientation: true
         });
     };

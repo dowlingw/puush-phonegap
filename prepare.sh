@@ -6,6 +6,7 @@ PLUGINS="
 org.apache.cordova.dialogs
 org.apache.cordova.camera
 org.apache.cordova.statusbar
+org.apache.cordova.file
 "
 
 PLATFORMS="
