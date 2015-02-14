@@ -1,6 +1,6 @@
 'use strict';
 
-var PUUSH_API_BASE = "https://puush.me/api";
+var PUUSH_API_BASE = "http://puush.me/api";
 var PUUSH_API_MAGIC = "poop";
 
 var CLIENT_DB_KEY_CONFIG = 'CONFIG';
@@ -204,20 +204,44 @@ s.factory('Puush', function($http,$q,Persist) {
         return deferred.promise;
     };
 
-    svc.Upload = function(file,md5,ApiKey) {
+    svc.Upload = function(file,fileUrl,md5,ApiKey) {
         var key = ApiKey||Persist.getConfig(CONFIG_KEY_APIKEY);
 
-        var data = new FormData();
-        data.append('k',key);
-        data.append('c',md5);
-        data.append('f',file,'ding.jpg'); // TODO: Fix upload name
-        data.append('z',PUUSH_API_MAGIC);
+        // Mobile Safari doesn't appear to support FormData.append(k, BLOB, [NAME]).
+        // But it seems that its ok, because there's a cordova plugin for file transfers
+        // It's cooler because it has a callback for upload progress (thats going to come in handy soon)
 
-        console.log("uploadinglah");
-        console.log(md5);
-        return $http.post(PUUSH_API_BASE+'/up', data, { 'transformResponse': transform_up,
-            headers: {'Content-Disposition': 'attachment; filename=yolo.jpg'} // TODO: Fix upload name
-        });
+        var deferred = $q.defer();
+
+        var options = new FileUploadOptions();
+        options.fileKey = 'f';
+        options.fileName = file.name;
+        options.params = {
+            'k': key,
+            'c': md5,
+            'z': PUUSH_API_MAGIC
+        };
+
+        var failure = function(error) {
+            console.log("Failed to upload file");
+            console.log("code " + error.code);
+            console.log("http_status " + error.http_status);
+            console.log("body " + error.body);
+            deferred.reject(error.code);
+        };
+        var success = function(result) {
+            // Transformers: Errors in disguise!
+            if( result.response === '-2' || result.response === '-3' || result.response === '-2,' ) {
+                failure(result);
+            } else {
+                deferred.resolve(result);
+            }
+        };
+
+        var transfer = new FileTransfer();
+        transfer.upload(fileUrl, encodeURI(PUUSH_API_BASE+'/up'), success, failure, options);
+
+        return deferred.promise;
     };
 
     svc.GetHistory = function(ApiKey) {

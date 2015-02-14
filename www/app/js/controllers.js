@@ -44,18 +44,16 @@ c.controller('PuushCtrl', function($scope,Puush) {
             .then(function(file){
                 Puush.MD5HashFile(file)
                     .then(function(md5_hash){
-                        Puush.Upload(file,md5_hash)
-                            .success(function(response) {
+                        Puush.Upload(file,imagePath,md5_hash)
+                            .then(function(response){
                                 console.log("image... uploaded");
                                 console.log(response);
-                            })
-                            .error(function(response) {
+                                navigator.camera.cleanup();
+                            },function(response){
                                 console.log("Haha of course that didn't work chump!");
                                 console.log(response);
-                            })
-                            .finally(function() {
-                                // Delete any images temporarily created
                                 navigator.camera.cleanup();
+
                             });
                     },function(){
                         console.log("Failed to hash file");

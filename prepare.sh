@@ -7,11 +7,15 @@ org.apache.cordova.dialogs
 org.apache.cordova.camera
 org.apache.cordova.statusbar
 org.apache.cordova.file
+org.apache.cordova.file-transfer
 "
 
 PLATFORMS="
 ios
 "
+
+rm -rf plugins/
+rm -rf platforms/
 
 for plugin in $PLUGINS; do
 	$EXECUTABLE plugin add $plugin

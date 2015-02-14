@@ -31,6 +31,7 @@
 	<preference name="StatusBarStyle" value="lightcontent" />
 
 	<plugin name="org.apache.cordova.file" />
+	<plugin name="org.apache.cordova.file-transfer" />
 	
 	<platform name="ios">
 		<preference name="DisallowOverscroll" value="true" />
