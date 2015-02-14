@@ -13,3 +13,9 @@
 .yolo {
     text-align: center;
 }
+
+.tab-puush {
+    background-color: #303030;
+    color: #adee26;
+    //flex-grow: 0.5;
+}
