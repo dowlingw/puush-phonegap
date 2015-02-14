@@ -19,8 +19,6 @@ c.controller('LoginCtrl', function($scope,$location,Puush,Persist) {
                 $scope.transacting = false;
             })
             .error(function(response) {
-                console.log("Fail whale");
-                console.log(response);
                 $scope.transacting = false;
             })
         ;
@@ -37,30 +35,11 @@ c.controller('NavCtrl', function($scope,$route,Puush) {
 });
 
 // This is a controller just for handling the "puush button"
-c.controller('PuushCtrl', function($scope,Puush) {
+c.controller('PuushCtrl', function($scope,$location) {
 
     $scope.picOk = function(imagePath) {
-        Puush.GetFile(imagePath)
-            .then(function(file){
-                Puush.MD5HashFile(file)
-                    .then(function(md5_hash){
-                        Puush.Upload(file,imagePath,md5_hash)
-                            .then(function(response){
-                                console.log("image... uploaded");
-                                console.log(response);
-                                navigator.camera.cleanup();
-                            },function(response){
-                                console.log("Haha of course that didn't work chump!");
-                                console.log(response);
-                                navigator.camera.cleanup();
-
-                            });
-                    },function(){
-                        console.log("Failed to hash file");
-                    });
-            },function(){
-                console.log("Failed to get file");
-            });
+        $location.url('/upload?uri='+encodeURIComponent(btoa(imagePath)));
+        $scope.$apply(); // blergh
     };
 
     $scope.optSelected = function(btnIdx) {
@@ -69,7 +48,8 @@ c.controller('PuushCtrl', function($scope,Puush) {
         }
         var imageSource = (btnIdx === 1) ? Camera.PictureSourceType.CAMERA : Camera.PictureSourceType.PHOTOLIBRARY;
 
-        navigator.camera.getPicture($scope.picOk, null, { quality: 50,
+        navigator.camera.getPicture($scope.picOk, null, {
+            quality: 50,
             sourceType: imageSource,
             destinationType: Camera.DestinationType.FILE_URI,
             correctOrientation: true
@@ -91,6 +71,39 @@ c.controller('PuushCtrl', function($scope,Puush) {
     };
 });
 
+c.controller('UploadCtrl', function($scope,$routeParams,$location,Puush) {
+    $scope.imagePath = atob($routeParams.uri);
+
+    $scope.cleanup = function() {
+        navigator.camera.cleanup();
+        $location.path('/history');
+        $scope.$apply();
+    };
+
+    $scope.success = function() {
+        $scope.cleanup();
+    };
+
+    $scope.failed = function() {
+        alert('Failed to puush!');
+        $scope.cleanup();
+    };
+
+    $scope.Upload = function(imagePath) {
+        Puush.GetFile(imagePath)
+            .then(function (file) {
+                Puush.MD5HashFile(file)
+                    .then(function (md5_hash) {
+                        Puush.Upload(file, imagePath, md5_hash)
+                            .then($scope.success, $scope.failed);
+                    }, $scope.failed);
+            }, $scope.failed);
+    };
+
+    // On load start uploading
+    $scope.Upload($scope.imagePath);
+});
+
 c.controller('HistoryCtrl', function($scope,Puush,Persist) {
     $scope.history = Persist.history;
     $scope.transacting = false;
@@ -110,9 +123,6 @@ c.controller('HistoryCtrl', function($scope,Puush,Persist) {
 
     // On load trigger an update
     $scope.Update();
-});
-
-c.controller('UploadCtrl', function($scope,Puush) {
 });
 
 c.controller('AccountCtrl', function($scope,Puush,Persist) {

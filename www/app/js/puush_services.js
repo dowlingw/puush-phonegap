@@ -1,6 +1,6 @@
 'use strict';
 
-var PUUSH_API_BASE = "http://puush.me/api";
+var PUUSH_API_BASE = "https://puush.me/api";
 var PUUSH_API_MAGIC = "poop";
 
 var CLIENT_DB_KEY_CONFIG = 'CONFIG';
@@ -151,17 +151,6 @@ s.factory('Puush', function($http,$q,Persist) {
         );
 
         return history;
-    };
-
-    var transform_up = function(data,headersGetter,status) {
-        // Transforms run before interceptors... wtf
-        if( data === '-1' || data === '-2' ) {
-            return data;
-        }
-
-        // TODO: Translate this
-
-        return data;
     };
 
     // TODO: Download thumbnail or fullsize image
