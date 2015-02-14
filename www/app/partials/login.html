@@ -1,22 +1,24 @@
-<div class="login-banner"></div>
-<form class="input-group" name="loginForm">
-    <div class="input-row">
-        <label>Email</label>
-        <input ng-disabled="transacting" type="email" placeholder="user@example.com" ng-model="email" required autofocus />
-    </div>
-    <div class="input-row">
-        <label>Password</label>
-        <input ng-disabled="transacting" type="password" placeholder="secret" ng-model="pass" required />
-    </div>
-</form>
-<div class="content-padded">
-    <p><b>Warning:</b> Some bitch done come and beat this app down with the ugly stick. Shit be fixed as soon as it works, yo. Fuckin' unbelievable.</p>
-    <div class="yolo" ng-show="transacting">
-        <i class="fa fa-spinner fa-pulse fa-5x"></i>
-    </div>
-</div>
-<div class="bar bar-standard bar-footer">
-    <button class="btn btn-positive btn-block" ng-disabled="loginForm.$invalid || transacting" ng-click="doLogin()" type="submit">
-        Login
-    </button>
-</div>
+<ion-view>
+    <ion-header-bar class="bar-balanced">
+        <h1 class="title">puush</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="LoginCtrl">
+        <div class="login-banner"></div>
+        <form name="loginForm">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input ng-disabled="transacting" type="email" placeholder="user@example.com" ng-model="email" required autofocus />
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input ng-disabled="transacting" type="password" placeholder="secret" ng-model="pass" required />
+                </label>
+            </div>
+            <div class="padding">
+                <button class="button button-block button-outline button-balanced" ng-disabled="loginForm.$invalid || transacting" ng-click="doLogin()">Login</button>
+            </div>
+            <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </form>
+    </ion-content>
+</ion-view>

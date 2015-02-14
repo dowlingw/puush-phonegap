@@ -26,8 +26,8 @@ c.controller('LoginCtrl', function($scope,$location,Puush,Persist) {
 });
 
 c.controller('NavCtrl', function($scope,$route,Puush) {
-    $scope.isLoggedIn = function() {
-        return Puush.isLoggedIn();
+    $scope.showNavigation = function() {
+        return Puush.isLoggedIn() && !Puush.navigation_locked;
     };
     $scope.isActive = function(tag) {
         return ($route.current.tabTag === tag);
@@ -57,6 +57,7 @@ c.controller('PuushCtrl', function($scope,$location) {
     };
 
     $scope.TakePicture = function() {
+        console.log(navigator);
         navigator.notification.confirm(
             'Select the source for the photo to puush',
             $scope.optSelected,
@@ -75,6 +76,7 @@ c.controller('UploadCtrl', function($scope,$routeParams,$location,Puush) {
     $scope.imagePath = atob($routeParams.uri);
 
     $scope.cleanup = function() {
+        Puush.navigation_locked = false;
         navigator.camera.cleanup();
         $location.path('/history');
         $scope.$apply();
@@ -90,6 +92,7 @@ c.controller('UploadCtrl', function($scope,$routeParams,$location,Puush) {
     };
 
     $scope.Upload = function(imagePath) {
+        Puush.navigation_locked = true;
         Puush.GetFile(imagePath)
             .then(function (file) {
                 Puush.MD5HashFile(file)
@@ -114,11 +117,16 @@ c.controller('HistoryCtrl', function($scope,Puush,Persist) {
         }
 
         $scope.transacting = true;
-        Puush.GetHistory().success(function(data){
-            $scope.transacting = false;
-            $scope.history = data;
-            Persist.setHistory(data);
-        });
+        Puush.GetHistory()
+            .success(function(data){
+                $scope.history = data;
+                Persist.setHistory(data);
+            })
+            .finally(function(){
+                $scope.transacting = false;
+                $scope.$broadcast('scroll.refreshComplete');
+            })
+        ;
     };
 
     // On load trigger an update

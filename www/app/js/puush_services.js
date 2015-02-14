@@ -111,7 +111,9 @@ s.factory('Persist', function($rootScope,$location,webStorage){
 
 // Service to interact with Puush remote API
 s.factory('Puush', function($http,$q,Persist) {
-    var svc = {};
+    var svc = {
+        navigation_locked: false
+    };
 
     var transform_auth = function(data,headersGetter,status) {
         // Transforms run before interceptors... wtf

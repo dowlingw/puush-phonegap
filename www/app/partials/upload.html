@@ -1,4 +1,19 @@
-<div class="bar bar-header bar-stable">
-    <h1 class="title">Upload</h1>
-</div>
-<img src="{{imagePath}}" class="preview" />
+<ion-view>
+    <ion-header-bar class="bar-balanced">
+        <h1 class="title">Upload</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="UploadCtrl">
+        <div class="list card">
+
+            <div class="item item-image">
+                <img src="{{imagePath}}" />
+            </div>
+
+            <a class="item item-icon-left assertive" href="#">
+                Uploading
+                <i class="icon ion-looping"></i>
+            </a>
+
+        </div>
+    </ion-content>
+</ion-view>

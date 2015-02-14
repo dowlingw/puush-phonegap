@@ -1,29 +1,30 @@
-<header class="bar bar-nav">
-    <h1 class="title">My Account</h1>
-</header>
-<div class="content">
-    <div class="content-padded">
-        <h5>Account Settings</h5>
-    </div>
-    <form class="input-group">
-        <div class="input-row">
-            <label>Email</label>
-            <input type="text" ng-model="user_email" disabled />
-        </div>
-        <div class="input-row">
-            <label>API Key</label>
-            <input type="email" ng-model="user_apikey" disabled />
-        </div>
-    </form>
+<ion-view>
+    <ion-header-bar class="bar-balanced">
+        <h1 class="title">My Account</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="AccountCtrl">
 
-    <div class="content-padded">
-        <h5>Application</h5>
-    </div>
-    <ul class="table-view">
-        <li class="table-view-cell">
-            <a class="navigate-right" ng-click="Reset()">
-                Reset data
-            </a>
-        </li>
-    </ul>
-</div>
+        <div class="item item-divider">
+            Account
+        </div>
+        <label class="item item-input">
+            <span class="input-label">Email</span>
+            <input type="text" ng-model="user_email" disabled />
+        </label>
+        <label class="item item-input">
+            <span class="input-label">API Key</span>
+            <input type="email" ng-model="user_apikey" disabled />
+        </label>
+
+        <div class="item item-divider">
+            Application
+        </div>
+        <div class="item item-button-right" ng-click="Reset()">
+            Reset Data
+            <button class="button button-clear">
+                <i class="icon ion-chevron-right"></i>
+            </button>
+        </div>
+
+    </ion-content>
+</ion-view>

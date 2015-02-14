@@ -25,11 +25,6 @@
 	<plugin name="org.apache.cordova.camera" />
 	<feature name="http://api.phonegap.com/1.0/camera" required="true" />
 
-	<plugin name="org.apache.cordova.statusbar" />
-	<preference name="StatusBarOverlaysWebView" value="false" />
-	<preference name="StatusBarBackgroundColor" value="#000000" />
-	<preference name="StatusBarStyle" value="lightcontent" />
-
 	<plugin name="org.apache.cordova.file" />
 	<plugin name="org.apache.cordova.file-transfer" />
 	

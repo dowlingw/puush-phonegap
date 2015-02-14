@@ -7,6 +7,7 @@ var app = angular.module('puush', [
     'ngRoute',
 
     'webStorageModule',
+    'ionic',
 
     'puushServices',
     'puushControllers'
@@ -15,10 +16,10 @@ var app = angular.module('puush', [
 app.config([ '$routeProvider',
     function($routeProvider) {
         $routeProvider
-            .when('/history', { templateUrl: 'app/partials/history.html', controller: 'HistoryCtrl', tabTag: 'history' })
-            .when('/upload', { templateUrl: 'app/partials/upload.html', controller: 'UploadCtrl', tabTag: 'upload' })
-            .when('/account', { templateUrl: 'app/partials/account.html', controller: 'AccountCtrl', tabTag: 'account' })
-            .when('/login', { templateUrl: 'app/partials/login.html', controller: 'LoginCtrl' })
+            .when('/history', { templateUrl: 'app/partials/history.html', tabTag: 'history' })
+            .when('/upload', { templateUrl: 'app/partials/upload.html', tabTag: 'upload' })
+            .when('/account', { templateUrl: 'app/partials/account.html', tabTag: 'account' })
+            .when('/login', { templateUrl: 'app/partials/login.html' })
             .otherwise({ redirectTo: '/history' });
     }
 ]);

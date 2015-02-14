@@ -1,14 +1,14 @@
-<nav class="bar bar-tab">
+<div class="tabs tabs-icon-top">
     <a class="tab-item" ng-class="{active: isActive('history')}" href="#/history">
-        <span class="icon fa fa-clock-o"></span>
-        <span class="tab-label">History</span>
+        <i class="icon ion-clock"></i>
+        Recent
     </a>
     <a class="tab-item" ng-class="{active: isActive('upload')}" ng-controller="PuushCtrl" ng-click="TakePicture()">
-        <span class="icon fa fa-arrow-up"></span>
-        <span class="tab-label">Upload</span>
+        <i class="icon ion-camera"></i>
+        Upload
     </a>
     <a class="tab-item" ng-class="{active: isActive('account')}" href="#/account">
-        <span class="icon fa fa-user"></span>
-        <span class="tab-label">Account</span>
+        <i class="icon ion-person"></i>
+        Account
     </a>
-</nav>
+</div>
