@@ -155,11 +155,6 @@ s.factory('Puush', function($http,$q,Persist) {
         return history;
     };
 
-    // TODO: Download thumbnail or fullsize image
-    // Try using $http to grab it and use FileManager
-    // See if FileManager lets you specify the $http object for the request
-    // Or use fullsize and cache
-
     svc.MD5HashFile = function(file) {
         var deferred = $q.defer();
 
@@ -290,7 +285,7 @@ s.config(function($httpProvider) {
                 return config;
             },
             'response': function(response) {
-                if( response.status === 200 && (response.data === '-1' || response.data === '-2') ) {
+                if( response.status === 200 && (response.data === '-1' || response.data === '-2' || response.data === '-2,') ) {
                     return $q.reject(response);
                 }
                 return response;
