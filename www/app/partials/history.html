@@ -9,7 +9,7 @@
         </ion-refresher>
         <div class="list">
 
-            <a class="item item-avatar" href="#" ng-repeat="item in history">
+            <a class="item item-avatar" href="#/view/{{item.id}}" ng-repeat="item in history">
                 <img src="http://placehold.it/42x42">
                 <h2>{{item.filename}}</h2>
                 <p>{{item.date}}</p>

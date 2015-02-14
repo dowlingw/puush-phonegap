@@ -1,0 +1,21 @@
+<ion-view>
+    <ion-header-bar class="bar-balanced">
+        <a class="button icon-left ion-chevron-left button-clear" href="#/history">Back</a>
+        <h1 class="title">History</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="ViewCtrl">
+        <div class="list card">
+
+            <a class="item item-icon-left">
+                <i class="icon ion-camera"></i>
+                <h2>{{item.filename}}</h2>
+                <p>{{item.date}}</p>
+            </a>
+
+            <div class="item item-body">
+                <img class="full-image" src="{{item.url}}" />
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

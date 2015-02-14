@@ -25,6 +25,27 @@ c.controller('LoginCtrl', function($scope,$location,Puush,Persist) {
     };
 });
 
+c.controller('ViewCtrl', function($scope,$routeParams,$location,Persist) {
+    $scope.item = null;
+
+    $scope.ResolveItem = function(id) {
+        var items = Persist.history.filter(function(x){
+            return (x.id != null && x.id === id);
+        });
+
+        if( items.length != 1 ) {
+            $location.path('/');
+            $scope.apply();
+            return;
+        }
+
+        $scope.item = items[0];
+    };
+
+    // On load, resolve the item
+    $scope.ResolveItem($routeParams.id);
+});
+
 c.controller('NavCtrl', function($scope,$route,Puush) {
     $scope.showNavigation = function() {
         return Puush.isLoggedIn() && !Puush.navigation_locked;
