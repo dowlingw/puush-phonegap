@@ -20,6 +20,7 @@ Once you have your development environment set up, you will need to run the `pre
 *    Install the required plugins
 *    Render the splash screen `screen.html` at all the required sizes
 *    Configure the platform configurations for the application
+*    Download third party assets locally (Angular, etc)
 
 
 Special Thanks
