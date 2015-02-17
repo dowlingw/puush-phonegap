@@ -34,10 +34,10 @@
 		<icon height="72" src="www/res/icon/ios/icon-72.png" width="72" />
 		<icon height="114" src="www/res/icon/ios/icon-57-2x.png" width="114" />
 		<icon height="144" src="www/res/icon/ios/icon-72-2x.png" width="144" />
-		<splash height="480" src="www/res/screen/ios/screen-iphone-portrait.png" width="320" />
-		<splash height="960" src="www/res/screen/ios/screen-iphone-portrait-2x.png" width="640" />
-		<splash height="1136" src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" />
-		<splash height="1024" src="www/res/screen/ios/screen-ipad-portrait.png" width="768" />
-		<splash height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
+		<splash height="480" src="splash/ios/screen-iphone-portrait.png" width="320" />
+		<splash height="960" src="splash/ios/screen-iphone-portrait-2x.png" width="640" />
+		<splash height="1136" src="splash/ios/screen-iphone-portrait-568h-2x.png" width="640" />
+		<splash height="1024" src="splash/ios/screen-ipad-portrait.png" width="768" />
+		<splash height="768" src="splash/ios/screen-ipad-landscape.png" width="1024" />
 	</platform>
 </widget>

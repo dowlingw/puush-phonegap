@@ -10,16 +10,14 @@ body, html {
 }
 
 body {
-	padding: 10%;
+
 }
 
-.logo {
-	width: 80%;
-	height: 80%;
-	display: block;
+.splash {
+    width: 100%;
+}
 
-	background-size: contain;
-	background-position: center;
-	background-image: url('../img/splash_logo.png');
-	background-repeat: no-repeat;
+.splash i {
+    color: #adee26;
+    font-size: 8em;
 }
