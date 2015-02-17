@@ -22,6 +22,8 @@ SPLASH_OPTIONS="
 640:1136:splash/ios/screen-iphone-portrait-568h-2x.png
 768:1024:splash/ios/screen-ipad-portrait.png
 1024:768:splash/ios/screen-ipad-landscape.png
+1334:750:splash/ios/iphone6.png
+1920:1080:splash/ios/iphone6plus.png
 "
 
 mkdir -p splash/ios

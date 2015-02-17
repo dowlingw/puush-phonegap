@@ -16,7 +16,6 @@
 	
 	<preference name="orientation" value="default" />
 	<preference name="webviewbounce" value="false" />
-	<preference name="show-splash-screen-spinner" value="true" />
 	<preference name="auto-hide-splash-screen" value="true" />
 	<preference name="disable-cursor" value="false" />
 
@@ -27,17 +26,19 @@
 
 	<plugin name="org.apache.cordova.file" />
 	<plugin name="org.apache.cordova.file-transfer" />
-	
+
 	<platform name="ios">
 		<preference name="DisallowOverscroll" value="true" />
-		<icon height="57" src="www/res/icon/ios/icon-57.png" width="57" />
-		<icon height="72" src="www/res/icon/ios/icon-72.png" width="72" />
-		<icon height="114" src="www/res/icon/ios/icon-57-2x.png" width="114" />
-		<icon height="144" src="www/res/icon/ios/icon-72-2x.png" width="144" />
-		<splash height="480" src="splash/ios/screen-iphone-portrait.png" width="320" />
-		<splash height="960" src="splash/ios/screen-iphone-portrait-2x.png" width="640" />
-		<splash height="1136" src="splash/ios/screen-iphone-portrait-568h-2x.png" width="640" />
-		<splash height="1024" src="splash/ios/screen-ipad-portrait.png" width="768" />
-		<splash height="768" src="splash/ios/screen-ipad-landscape.png" width="1024" />
+		<icon width="57" height="57" src="www/res/icon/ios/icon-57.png" />
+		<icon width="72" height="72" src="www/res/icon/ios/icon-72.png" />
+		<icon width="114" height="114" src="www/res/icon/ios/icon-57-2x.png" />
+		<icon width="144" height="144" src="www/res/icon/ios/icon-72-2x.png" />
+		<splash width="320" height="480" src="splash/ios/screen-iphone-portrait.png" />
+		<splash width="640" height="960" src="splash/ios/screen-iphone-portrait-2x.png" />
+		<splash width="640" height="1136" src="splash/ios/screen-iphone-portrait-568h-2x.png" />
+		<splash width="768" height="1024" src="splash/ios/screen-ipad-portrait.png" />
+		<splash width="1024" height="768" src="splash/ios/screen-ipad-landscape.png" />
+		<splash width="1334" height="750" src="splash/ios/iphone6.png" />
+		<splash width="1920" height="1080" src="splash/ios/iphone6plus.png" />
 	</platform>
 </widget>
